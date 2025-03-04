@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD gunicorn main:app --workers 8 --worker-class uvicorn.workers.UvicornWorker --bind=0.0.0.0:${PORT:-8080} 
+CMD gunicorn src.main:app --workers 8 --worker-class uvicorn.workers.UvicornWorker --bind=0.0.0.0:${PORT:-8080} 
