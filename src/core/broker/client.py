@@ -25,7 +25,7 @@ class BrokerClient:
                     print(data)
                     request = LLMRequest(message=data["message"], user=data["user"])
                     response = await callback(request)
-                    await self.publish(self.publish_channel, response.model_dump())
+                    await self.publish(self.publish_channel, str(response.model_dump()))
                 await asyncio.sleep(0.01)
         except Exception as e:
             print(f"Ошибка подписки на Redis: {e}")
