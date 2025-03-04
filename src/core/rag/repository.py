@@ -101,7 +101,7 @@ class RAGRepository:
                 ]
             }
 
-            await cache_client.set(cache_key, dumps(formatted_result), expire=3600)  # Кешируем поиск на 1 час
+            await cache_client.set(cache_key, dumps(formatted_result), expire=3600)
             return formatted_result
         except Exception as e:
             raise RAGExceptions.EmbeddingsSearchFailed(detail=str(e))

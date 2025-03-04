@@ -9,6 +9,8 @@ class Settings(BaseSettings):
     pinecone_index_name: str
     redis_host: str
     redis_port: int
+    redis_password: str
+    redis_username: str
 
     class Config:
         env_file = ".env"
