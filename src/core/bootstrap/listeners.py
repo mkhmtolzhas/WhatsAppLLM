@@ -8,11 +8,11 @@ class Listener:
     @staticmethod
     async def startup():
         await cache_client.startup()
-        await broker_client.subscribe(llm_service.get_response)
+        # await broker_client.subscribe(llm_service.get_response)
     
     @staticmethod
     async def shutdown():
-        await broker_client.close()
+        # await broker_client.close()
         await cache_client.close()
 
     @staticmethod
