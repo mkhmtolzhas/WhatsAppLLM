@@ -7,10 +7,7 @@ class Settings(BaseSettings):
     openai_api_key: str
     pinecone_api_key: str
     pinecone_index_name: str
-    redis_host: str
-    redis_port: int
-    redis_password: str
-    redis_username: str
+    redis_url: str
 
     class Config:
         env_file = ".env"

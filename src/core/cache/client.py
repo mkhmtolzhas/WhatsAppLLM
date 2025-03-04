@@ -2,8 +2,8 @@ from redis.asyncio import Redis
 from src.core.config import settings
 
 class CacheClient:
-    def __init__(self, host: str, port: int, password: str, username: str):
-        self.redis = Redis(host=host, port=port, password=password, username=username, decode_responses=True)
+    def __init__(self, redis_url: str):
+        self.redis = Redis.from_url(url=redis_url, decode_responses=True)
 
     async def startup(self):
         try:
@@ -26,7 +26,7 @@ class CacheClient:
 
 
 
-cache_client = CacheClient(settings.redis_host, settings.redis_port, settings.redis_password, settings.redis_username)
+cache_client = CacheClient(settings.redis_url)
 
     
 
