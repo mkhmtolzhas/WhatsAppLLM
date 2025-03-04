@@ -18,7 +18,8 @@ class RAGRepository:
     
     async def get_embeddings(self, text: str):
         try:
-            cached_embedding = await cache_client.get(text)
+            cache_key = f"embeddings:{RAGUtils.get_hash(text)}"
+            cached_embedding = await cache_client.get(cache_key)
             if cached_embedding:
                 return loads(cached_embedding)
             
@@ -28,7 +29,7 @@ class RAGRepository:
             )
 
             embedding = response.data[0].embedding
-            await cache_client.set(text, dumps(embedding), expire=86400)
+            await cache_client.set(cache_key, dumps(embedding), expire=86400)
 
             return response.data[0].embedding
         except Exception as e:
