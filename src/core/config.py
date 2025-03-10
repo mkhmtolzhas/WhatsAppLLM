@@ -8,6 +8,7 @@ class Settings(BaseSettings):
     pinecone_api_key: str
     pinecone_index_name: str
     redis_url: str
+    rabbitmq_url: str
 
     class Config:
         env_file = ".env"
