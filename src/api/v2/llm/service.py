@@ -14,7 +14,6 @@ class LLMService:
             raise LLMExceptions.BadRequest()
         
         context = await rag_repository.search_embeddings(message.message, message.user)
-        print(context)
         
         await rag_repository.upsert_embeddings(message.message, message.user)
 

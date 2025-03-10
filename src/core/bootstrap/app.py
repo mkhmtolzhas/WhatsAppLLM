@@ -12,7 +12,7 @@ class AppCreator:
         )
         self.setup_middlewares(allow_origins)
         self.setup_routers()
-        self.setup_listeners(self.app)
+        self.setup_listeners()
 
 
     def setup_middlewares(self, allow_origins: list[str]):
@@ -27,8 +27,8 @@ class AppCreator:
     def setup_routers(self):
         self.app.include_router(router)
     
-    def setup_listeners(self, app: FastAPI):
-        Listener.init_listeners(app)
+    def setup_listeners(self):
+        Listener.init_listeners(self.app)
         
 
     def get_app(self) -> FastAPI:

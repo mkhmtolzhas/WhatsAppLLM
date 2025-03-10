@@ -1,5 +1,5 @@
 import json
-from config import settings
+from src.core.config import settings
 from aio_pika import connect_robust, ExchangeType, Message, DeliveryMode
 
 
@@ -12,6 +12,7 @@ class Broker:
     async def connect(self):
         self.connection = await connect_robust(self.rabbitmq_url)
         self.channel = await self.connection.channel()
+        print("Connected to RabbitMQ")
     
     async def publish(self, exchange_name: str, routing_key: str, data: dict):
         exchange = await self.channel.declare_exchange(exchange_name, ExchangeType.DIRECT)

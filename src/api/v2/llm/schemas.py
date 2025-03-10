@@ -2,7 +2,9 @@ from pydantic import BaseModel
 
 class LLMBase(BaseModel):
     user: str
-    pass
+    
+    class Config:
+        from_attributes = True
 
 class LLMRequest(LLMBase):
     message: str

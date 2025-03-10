@@ -1,13 +1,15 @@
 from fastapi import FastAPI
 from src.core.cache.client import cache_client
 from src.core.messaging.broker import broker
+from src.api.v2.llm.controller import Controller
+from asyncio import create_task
 
 class Listener:
     @staticmethod
     async def startup():
         await cache_client.startup()
         await broker.connect()
-        await broker.consume(callback=Listener.consume_callback, queue_name="llm", exchange_name="llm", routing_key="llm")
+        await Controller.consuming()
     
     @staticmethod
     async def shutdown():
