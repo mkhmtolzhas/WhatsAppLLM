@@ -19,6 +19,5 @@ class Controller:
     async def callback(message: IncomingMessage):
         async with message.process():
             message = json.loads(message.body.decode())
-            print("Received message", message)
             response = await llm_service.get_response(LLMRequest(**message))
             await broker.publish(exchange_name="llm", routing_key="llm", data=response.model_dump())

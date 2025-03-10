@@ -1,10 +1,13 @@
+aio-pika==9.5.5
 aioredis==2.0.1
+aiormq==6.8.1
 annotated-types==0.7.0
 anyio==4.8.0
 async-timeout==5.0.1
 certifi==2025.1.31
 click==8.1.8
 distro==1.9.0
+exceptiongroup==1.2.2
 fastapi==0.115.11
 googleapis-common-protos==1.69.0
 grpcio==1.70.0
@@ -15,10 +18,13 @@ httpx==0.28.1
 idna==3.10
 jiter==0.8.2
 lz4==4.4.3
+multidict==6.1.0
 openai==1.65.2
 packaging==24.2
+pamqp==3.3.0
 pinecone==6.0.1
 pinecone-plugin-interface==0.0.7
+propcache==0.3.0
 protobuf==5.29.3
 protoc-gen-openapiv2==0.0.1
 pydantic==2.10.6
@@ -34,3 +40,4 @@ tqdm==4.67.1
 typing_extensions==4.12.2
 urllib3==2.3.0
 uvicorn==0.34.0
+yarl==1.18.3

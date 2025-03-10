@@ -73,12 +73,6 @@ class RAGRepository:
 
     async def search_embeddings(self, text: str, user: str):
         try:
-            cache_key = f"search:{user}:{RAGUtils.get_hash(text)}"
-            cached_result = await cache_client.get(cache_key)
-
-            if cached_result is not None:
-                return loads(cached_result)
-
             embedding = await self.get_embeddings(text)
             if not embedding:
                 raise RAGExceptions.EmbeddingsNotFound()
@@ -101,8 +95,7 @@ class RAGRepository:
                     for r in result["matches"]
                 ]
             }
-
-            await cache_client.set(cache_key, dumps(formatted_result), expire=3600)
+            
             return formatted_result
         except Exception as e:
             raise RAGExceptions.EmbeddingsSearchFailed(detail=str(e))
